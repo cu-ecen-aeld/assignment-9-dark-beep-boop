@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    /sbin/scull_load
+    /sbin/module_load faulty
+    /sbin/module_load hello
+    ;;
+  stop)
+    /sbin/scull_unload
+    /sbin/module_unload faulty
+    /sbin/module_unload hello
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit 0
