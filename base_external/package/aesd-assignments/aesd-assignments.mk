@@ -5,7 +5,7 @@
 #
 ##############################################################
 
-AESD_ASSIGNMENTS_VERSION = '13523b6a34a0d654efb8d302dc1c3224fa6dfcfa'
+AESD_ASSIGNMENTS_VERSION = 'afcea37f902d4de08ffbccc9cfe51bd727a0c29b'
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
@@ -15,7 +15,7 @@ AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 
 define AESD_ASSIGNMENTS_BUILD_CMDS
 	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app all
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/server all
+	$(MAKE) $(TARGET_CONFIGURE_OPTS) CFLAGS=-DUSE_AESD_CHAR_DEVICE=1 -C $(@D)/server all
 endef
 
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
